@@ -1,57 +1,66 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Vlog</title>
+    <title>Quill Writing Animation</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
         body {
-            background: linear-gradient(to right, #1a1a1a, #333);
-            color: gold;
-            font-family: 'Times New Roman', serif;
-            text-align: center;
-            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+            overflow: hidden;
         }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8);
+            position: relative;
         }
+
+        .text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #3e2723;
+            border-right: 2px solid #3e2723;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: write 3s steps(7, end) forwards, blink 0.7s infinite;
+        }
+
+        @keyframes write {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
         .quill {
-            font-size: 32px;
-            font-style: italic;
-            color: silver;
-            animation: writeText 3s ease-in-out;
+            width: 50px;
+            position: absolute;
+            bottom: 10px;
+            right: -40px;
+            transform: rotate(20deg);
+            animation: move 3s linear forwards;
         }
-        @keyframes writeText {
-            0% { opacity: 0; transform: translateX(-50px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-        .btn {
-            background: gold;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: silver;
-            color: black;
+
+        @keyframes move {
+            from { right: 100%; }
+            to { right: -40px; }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="quill">✒️ Welcome to Premium Vlog</div>
-        <p>Access exclusive content with different roles.</p>
-        <button class="btn" onclick="location.href='viewer.html'">Enter as Viewer</button>
-        <button class="btn" onclick="location.href='writer.html'">Login as Writer</button>
-        <button class="btn" onclick="location.href='operator.html'">Operator Panel</button>
+        <span class="text">Welcome</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Quill_icon.png" class="quill">
     </div>
+
 </body>
 </html>
